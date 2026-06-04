@@ -1,10 +1,9 @@
 name: Trading Economics Daily Scraper
 
 on:
-  schedule:
-    # UTC 기준 21:30 (한국 시간 기준 매일 아침 06:30 실행)
-    - cron: '30 21 * * *' 
-  workflow_dispatch: # 깃허브 웹사이트에서 수동으로 실행할 수 있는 버튼 활성화
+  repository_dispatch:
+    types: [trading-economics-trigger] # 외부 크론 서비스가 호출할 초인종 이름입니다.
+  workflow_dispatch: # 깃허브 웹사이트에서 수동으로 실행할 수 있는 기존 버튼도 그대로 유지합니다.
 
 jobs:
   update-sheet:
